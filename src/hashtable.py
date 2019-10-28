@@ -51,9 +51,16 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+        pair = LinkedPair(key, value)  # {key: value}
 
+        self.storage[index] = pair
 
+        print(self.storage[index].key, ":", self.storage[index].value)
+        # for i in range(0, len(self.storage) - 1 ):
+        #     print(self.storage[i].key)
+
+        return self.storage[index]
 
     def remove(self, key):
         '''
@@ -63,8 +70,12 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
 
+        if self.storage[index] == None:
+            print("ERROR")
+        else:
+            self.storage[index].value = None
 
     def retrieve(self, key):
         '''
@@ -74,7 +85,12 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+
+        if self.storage[index].value != None:
+            return self.storage[index].value
+        else:
+            return None
 
 
     def resize(self):
