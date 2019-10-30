@@ -19,6 +19,13 @@ class TestHashTable(unittest.TestCase):
         ht.insert("key-8", "val-8")
         ht.insert("key-9", "val-9")
 
+        for i in range(0, 8):
+            if ht.storage[i] == None:
+                print("none case ", ht.storage[i])
+            else:
+                print("next ", ht.storage[i].next)
+                print("value ", ht.storage[i].value)
+
         return_value = ht.retrieve("key-0")
         self.assertTrue(return_value == "val-0")
         return_value = ht.retrieve("key-1")
@@ -28,6 +35,7 @@ class TestHashTable(unittest.TestCase):
         return_value = ht.retrieve("key-3")
         self.assertTrue(return_value == "val-3")
         return_value = ht.retrieve("key-4")
+        print("l38: ", return_value)
         self.assertTrue(return_value == "val-4")
         return_value = ht.retrieve("key-5")
         self.assertTrue(return_value == "val-5")
